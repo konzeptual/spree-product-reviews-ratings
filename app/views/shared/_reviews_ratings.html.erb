@@ -1,24 +1,20 @@
-<div id="ratings"> 
-  <% content_for :head do -%>
-    <%= javascript_include_tag 'jquery.product_reviews_ratings.js' %>
-    <%= stylesheet_link_tag 'product_reviews_ratings.css' %>
-  <% end -%>
+<% content_for :head do -%>
+  <%= javascript_include_tag 'jquery.product_reviews_ratings.js' %>
+  <%= stylesheet_link_tag 'product_reviews_ratings.css' %>
+<% end -%>
 
-  <% if logged_in? -%>
-  <p>Rate this product:</p>
-  <input type="hidden" id="user_rating" value="<%= @user_rating %>" />
-  <%= hidden_field(:rating, :url, :value => ratings_url) %>
-  <%= hidden_field(:rating, :user_id, :value => current_user.id) %>
-  <%= hidden_field(:rating, :product_id, :value => product.id) %>
-  <span class="vote" id="rating1"></span>
-  <span class="vote" id="rating2"></span>
-  <span class="vote" id="rating3"></span>
-  <span class="vote" id="rating4"></span>
-  <span class="vote" id="rating5"></span>
-  <%= text_field(:review, '') %>
-  <%= text_field(:content, '') %>
-  <div>Submit</div>
-  <% else -%>
-  <p><a href="/login">You must be logged in to rate and review this product.</a></p>
-  <% end -%>
-</div>
+<% if logged_in? %>
+<%= hidden_field(:reviews_ratings, :user_id, :value => current_user.id) %>
+<%= hidden_field(:reviews_ratings, :product_id, :value => product.id) %>
+<h3 id="review_and_rating">Review and Rate this Product</h3>
+<p id="success"></p>
+<% if 1 -%>
+  <%= render :partial => 'ratings/form', :locals => { :product => product } %>
+<% end -%>
+<% if 1 -%>
+  <%= render :partial => 'reviews/form', :locals => { :product => product } %>
+<% end -%>
+
+<% else -%>
+<p>You must be logged in to ...</p>
+<% end -%>

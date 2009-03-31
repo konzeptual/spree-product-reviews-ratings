@@ -1,0 +1,8 @@
+<div id="reviews">
+  <% if !@product_review.nil? %>
+  ALERT - You have already submitted a review for this product. You may resubmit, but your old review will be removed.
+  <% end -%>
+  <p><label for="title">Title</label><%= text_field :review, :title, { :value => @user_title } %></p>
+  <p><label for="content">Content</label><%= text_area(:review, :content, :rows => 5, :cols => 40, :value => @user_review) %></p>
+  <div id="submit">Submit</div>
+</div>

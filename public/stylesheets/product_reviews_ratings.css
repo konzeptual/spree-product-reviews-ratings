@@ -1,2 +1,17 @@
-div#ratings span { background: url(/images/star.png) no-repeat top left; height: 16px; width: 16px; display: block; float: left; margin-right: 1px; }
-div#ratings span.vote:hover { cursor: pointer; }
+div#reviews { clear: both; margin: 10px 0px; }
+  div#reviews p { margin: 3px 0px; }
+  div#reviews div#submit { background: url(/images/reviews_ratings.png) no-repeat 0px -16px; height: 29px; width: 74px; display: block; text-indent: -100000px }
+    div#reviews div#submit:hover { cursor: pointer; }
+  div#reviews input { border: 1px solid #999999; width: 100%; }
+  div#reviews textarea { border: 1px solid #999999; width: 100%; height: 100px; padding: 0px; }
+
+div#ratings { clear: both; margin: 10px 0px; }
+  div#ratings span { background: url(/images/reviews_ratings.png) no-repeat 0px 0px; height: 16px; width: 16px; display: block; float: left; margin-right: 1px; }
+  div#ratings span.vote:hover { cursor: pointer; }
+
+p#average_rating span { background: url(/images/reviews_ratings.png) no-repeat 0px 0px; height: 16px; width: 16px; display: block; float: left; margin-right: 1px; }
+
+p#success { margin-bottom: 5px; color: red; }
+
+h3#review_and_rating, h3#haverage_rating, div#product_reviews h3 { clear: both; margin: 5px 0px; }
+div.clear { clear: both; }

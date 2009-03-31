@@ -1,0 +1,14 @@
+<% if !product.reviews.empty? -%>
+<div id="product_reviews">
+<h3>Product Reviews</h3>
+<% product.reviews.each do |review| -%>
+  <p class="areview">
+    <% if !review.rating.nil? -%>
+    <%= review.rating.rating %>
+    <% end -%>
+    <b><%= review.title %></b><br />
+    <%= review.content %>
+  </p>
+<% end -%>
+</div>
+<% end -%>
