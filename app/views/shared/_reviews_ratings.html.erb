@@ -15,7 +15,10 @@
   <span class="vote" id="rating3"></span>
   <span class="vote" id="rating4"></span>
   <span class="vote" id="rating5"></span>
+  <%= text_field(:review, '') %>
+  <%= text_field(:content, '') %>
+  <div>Submit</div>
   <% else -%>
-  <p><a href="/login">You must be logged in to rate this product.</a></p>
+  <p><a href="/login">You must be logged in to rate and review this product.</a></p>
   <% end -%>
 </div>

@@ -1,3 +1,8 @@
+//toggle:
+//ratings only
+//reviews only
+//ratings and reviews
+
 $(function() {
   $('div#ratings span.vote').mouseover(function() {
     for(var i=1; i<=$(this).attr('id').replace('rating', ''); i++) {
@@ -53,3 +58,7 @@ var submit_vote = function(rating) {
     }
   });
 };
+
+submit_comment = function(comment, title) {
+  //js to submit comment
+}
