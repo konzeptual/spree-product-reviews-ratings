@@ -1,0 +1,34 @@
+<div id="ratings"> 
+  <% content_for :head do -%>
+    <%= javascript_include_tag 'jquery.product_reviews_ratings.js' %>
+    <%= stylesheet_link_tag 'product_reviews_ratings.css' %>
+  <% end -%>
+
+  <p id="no_rating"<% if !product.ratings.empty? %> style="display:none;"<% end -%>>
+    This product has not yet been rated.
+  </p>
+  <p id="average_rating"<% if product.ratings.empty? -%> style="display:none;"<% end -%>>
+    Average Rating:
+    <span id="avg_rating1"></span>
+    <span id="avg_rating2"></span>
+    <span id="avg_rating3"></span>
+    <span id="avg_rating4"></span>
+    <span id="avg_rating5"></span>
+    <input type="hidden" id="avg_rating" value="<%= product.ratings.average('rating') %>" />
+  </p>
+  
+  <% if logged_in? -%>
+  <p>Rate this product:</p>
+  <input type="hidden" id="user_rating" value="<%= @user_rating %>" />
+  <%= hidden_field(:rating, :url, :value => ratings_url) %>
+  <%= hidden_field(:rating, :user_id, :value => current_user.id) %>
+  <%= hidden_field(:rating, :product_id, :value => product.id) %>
+  <span class="vote" id="rating1"></span>
+  <span class="vote" id="rating2"></span>
+  <span class="vote" id="rating3"></span>
+  <span class="vote" id="rating4"></span>
+  <span class="vote" id="rating5"></span>
+  <% else -%>
+  <p><a href="/login">You must be logged in to rate this product.</a></p>
+  <% end -%>
+</div>

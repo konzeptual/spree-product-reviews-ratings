@@ -1,0 +1,2 @@
+div#ratings span { background: url(/images/star.png) no-repeat top left; height: 16px; width: 16px; display: block; float: left; margin-right: 1px; }
+div#ratings span.vote:hover { cursor: pointer; }
