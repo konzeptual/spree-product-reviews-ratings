@@ -118,11 +118,12 @@ var submit_rating = function(additional_arg) {
 
 var submit_review = function() {
   var args = base_args('review') +
+    '&review[status_id]=' + $('input#reviews_rating_status').val() + 
     '&review[title]=' + encodeURIComponent($('input#review_title').val()) +
     '&review[content]=' + encodeURIComponent($('textarea#review_content').val()) +
     '&authenticity_token=' + encodeURIComponent($('[name=authenticity_token]').val());
   submit_review_and_rating(args, '/reviews', function(json) {
-      $('p#no_review').remove();
+      $('p#no_reviews').remove();
       $('p#review_' + json.user_id).remove();
       $('div#product_reviews').append($(document.createElement('p')).html('<span></span><span></span><span></span><span></span><span></span><b>' + json.title + '</b><br />' + json.content).attr('id', 'review_' + json.user_id));
       $('p#review_' + json.user_id).css('background-color', '#D4D8DA');
