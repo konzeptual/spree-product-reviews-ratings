@@ -1,14 +1,18 @@
-<% if !product.reviews.empty? -%>
 <div id="product_reviews">
 <h3>Product Reviews</h3>
+<% if !product.reviews.empty? -%>
 <% product.reviews.each do |review| -%>
-  <p class="areview">
+  <p id="review_<%= review.user_id %>">
     <% if !review.rating.nil? -%>
-    <%= review.rating.rating %>
+      <span></span><span></span><span></span><span></span><span></span>
+      <input type="hidden" name="areview_rating" value="<%= review.rating.rating %>" />
     <% end -%>
     <b><%= review.title %></b><br />
     <%= review.content %>
   </p>
 <% end -%>
 </div>
+<% else -%>
+  <p id="no_reviews">This product has no reviews</p>
 <% end -%>
+</div>

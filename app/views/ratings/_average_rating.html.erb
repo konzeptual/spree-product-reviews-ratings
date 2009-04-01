@@ -2,12 +2,7 @@
 <p id="no_rating"<% if !product.ratings.empty? %> style="display:none;"<% end -%>>
   This product has not yet been rated.
 </p>
-<p id="average_rating"<% if product.ratings.empty? -%> style="display:none;"<% end -%>>
-  <span id="avg_rating1"></span>
-  <span id="avg_rating2"></span>
-  <span id="avg_rating3"></span>
-  <span id="avg_rating4"></span>
-  <span id="avg_rating5"></span>
-  <div class="clear"></div>
+<div id="average_rating"<% if product.ratings.empty? -%> style="display:none;"<% end -%>>
+  <span></span><span></span><span></span><span></span><span></span><div class="clear"></div>
   <input type="hidden" id="avg_rating" value="<%= product.ratings.average('rating') %>" />
-</p>
+</div>
