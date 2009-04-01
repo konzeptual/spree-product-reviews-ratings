@@ -4,6 +4,13 @@ class ProductReviewsRatingsExtension < Spree::Extension
   url "http://spreehq.org/"
 
   def activate
+    Admin::ConfigurationsController.class_eval do
+      before_filter :add_product_reviews_link, :only => :index
+      def add_product_reviews_link
+        @extension_links << {:link => admin_reviews_url, :link_text => 'Product Reviews', :description => 'Product Reviews'}
+      end
+    end
+
     ProductsController.class_eval do
       before_filter :set_user_review_and_rating, :only => :show
       

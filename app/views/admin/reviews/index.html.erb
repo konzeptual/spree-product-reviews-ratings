@@ -1,0 +1,15 @@
+<% if @reviews -%>
+<% @reviews.each do |review| -%>
+<p>
+  <b><%= review.title %></b> (<%= review.created_at %></i>)<br />
+  <%= review.content %><br />
+  User: <%= review.user_id %>, Product: <%= review.product_id %><br />
+  <% if review.rating -%>
+  Rating: <%= review.rating.rating %><br />
+  <% end -%>
+  <%= collection_select('bingo', :id,  @statuses, :id, :status) %>
+</p>
+<% end -%>
+<% else -%>
+<p>There are no reviews</p>
+<% end -%>

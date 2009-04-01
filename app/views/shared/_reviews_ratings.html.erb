@@ -19,5 +19,7 @@
 <% end -%>
 
 <% else -%>
-<p>You must be logged in to ...[login bounce]</p>
+TODO: Fix this so it only gets set onclick.
+<% session[:return_to] = request.request_uri %>
+<p><%= link_to t('log_in'), login_path %></p>
 <% end -%>
