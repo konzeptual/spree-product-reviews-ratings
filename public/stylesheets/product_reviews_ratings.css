@@ -1,7 +1,7 @@
 div#reviews { clear: both; margin: 10px 0px; }
   div#reviews p#review_alert { color: red; font-size: 10px; }
   div#reviews p { margin: 3px 0px; }
-  div#reviews div#submit { background: url(/images/reviews_ratings.png) no-repeat 0px -16px; height: 29px; width: 74px; display: block; text-indent: -100000px }
+  div#reviews div#submit { background: url(/images/reviews_ratings.png) no-repeat 0px -16px; height: 29px; width: 74px; display: block; }
     div#reviews div#submit:hover { cursor: pointer; }
   div#reviews input { border: 1px solid #999999; width: 100%; }
   div#reviews textarea { border: 1px solid #999999; width: 100%; height: 100px; padding: 0px; }
@@ -11,11 +11,17 @@ div#reviews, div#product_reviews { clear: both; margin: 5px 0px; }
 
 div#ratings span,
 div#average_rating span,
-div#product_reviews span { background: url(/images/reviews_ratings.png) no-repeat 0px 0px; height: 16px; width: 16px; display: block; float: left; margin-right: 1px; }
+div#product_reviews span { background: url(/images/reviews_ratings.png) no-repeat 0px 0px; height: 16px; width: 16px; display: block; float: left; margin-right: 2px; }
 
-p#success { margin:0px; color: red; font-size: 10px; } 
-h3#review_and_rating, h3#haverage_rating, div#product_reviews h3 { clear: both; margin: 10px 0px 5px 0px; }
+p#success { margin:0px; color: red; font-size: 10px; height: 13px; clear: both; }
+h3#review_and_rating { display: inline; float: left; margin: 0px; }
+img#review_loader { display: none; float: left; margin-left: 4px; }
+ 
+h3#haverage_rating, div#product_reviews h3 { clear: both; margin: 10px 0px 0px 0px; }
 div#average_rating, div#ratings { height: 16px; clear: both; margin-bottom: 5px; }
-div#product_reviews p { padding: 4px; margin: 4px 0px; }
+
+div#product_reviews p { padding: 0px; margin: 4px 0px; }
+div#product_reviews span { margin-bottom: 3px; }
+div#product_reviews b { clear: both; display: block; }
 
 div.clear { clear: both; }

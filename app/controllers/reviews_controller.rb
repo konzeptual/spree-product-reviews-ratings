@@ -7,6 +7,6 @@ class ReviewsController < Spree::BaseController
   end
 
   create.response do |wants|
-    wants.html { render :json => { :title => object.title, :content => object.content, :id => object.id, :user_id => object.user_id }.to_json, :layout => false }
+    wants.html { render :json => { :title => object.title, :content => object.content, :id => object.id, :user_id => object.user_id, :status => object.review_status_id }.to_json, :layout => false }
   end
 end

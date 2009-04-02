@@ -1,0 +1,6 @@
+div.review img { display: none; position: relative; top: 3px; margin-left: 6px; }
+  div.review div.save_msg { display: inline; margin-left: 6px; }
+
+div.review span { background: url(/images/reviews_ratings.png) no-repeat 0px 0px; height: 16px; width: 16px; display: block; float: left; margin-right: 1px; }
+
+div.clear { clear: both; }
