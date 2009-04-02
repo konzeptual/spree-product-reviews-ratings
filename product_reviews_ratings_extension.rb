@@ -7,7 +7,7 @@ class ProductReviewsRatingsExtension < Spree::Extension
     Admin::ConfigurationsController.class_eval do
       before_filter :add_product_reviews_link, :only => :index
       def add_product_reviews_link
-        @extension_links << {:link => admin_reviews_url, :link_text => 'Product Reviews', :description => 'Product Reviews'}
+        @extension_links << { :link => admin_reviews_url, :link_text => 'Product Reviews', :description => 'Product Reviews' }
       end
     end
 

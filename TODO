@@ -1,5 +1,4 @@
-Complete reviews admin management.
-Add another page view for all product reviews, set limit on initial product review display.
-Finish login bounce logic.
-Add translation pieces.
-Add messages for headers and login message.
+Cross browser testing.
+Use case testing.
+Documentation.
+Fix login bounce.
