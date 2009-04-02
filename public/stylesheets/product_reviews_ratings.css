@@ -24,4 +24,8 @@ div#product_reviews p { padding: 0px; margin: 4px 0px; }
 div#product_reviews span { margin-bottom: 3px; }
 div#product_reviews b { clear: both; display: block; }
 
+div.review_left { float: left; width: 590px; }
+  div.review_left hr { margin: 10px 0px; }
+div.review_right { float: right; width: 280px; text-align: center; }
+  div.review_right p { text-align: left; }
 div.clear { clear: both; }

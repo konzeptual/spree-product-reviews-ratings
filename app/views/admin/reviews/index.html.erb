@@ -1,5 +1,6 @@
 <% content_for :head do -%>
   <%= javascript_include_tag 'jquery-1.3.2.min' %>
+  <%= javascript_include_tag 'jquery.tablesorter.min' %>
   <%= javascript_include_tag 'jquery.product_reviews_ratings.admin' %>
   <%= stylesheet_link_tag 'product_reviews_ratings.admin' %>
 <% end -%>
@@ -7,22 +8,39 @@
 <% if @reviews -%>
 <%= hidden_field(:review, :authenticity_token, { :value => form_authenticity_token.to_s } ) %>
 
+<table id="admin_reviews">
+  <thead>
+    <tr>
+      <th id="data">Data</th>
+      <th id="status">Status</th>
+      <th id="user_id">User Id<div></div></th>
+      <th id="product_id">Product Id<div></div></th>
+      <th id="date">Date<div></div></th>
+    </tr>
+  </thead>
+  <tbody>
 <% @reviews.each do |review| -%>
-<div class="review">
-  <% if review.rating -%>
-  <div id="rating_<%= review.id %>" class="rate_<%= review.rating.rating %>">
-    <span></span><span></span><span></span><span></span><span></span><div class="clear"></div>
-  </div>
-  <% end -%>
-  <b><%= review.title %></b>: <%= review.content %><br />
-  Date: (<%= review.created_at.strftime("%Y-%m-%d") %></i>) | User: <%= review.user_id %> |  Product: <%= review.product_id %><br />
-  <div id="review_<%= review.id %>">
-    <%= collection_select('review', :review_status_id,  @statuses, :id, :status) %>
-    <img src="/images/ajax_loader.gif" />
-    <div class="save_msg"></div>
-  </div>
-</div>
+    <tr class="review">
+      <td>
+        <% if review.rating -%>
+        <div id="rating_<%= review.id %>" class="rate_<%= review.rating.rating %>">
+          <span></span><span></span><span></span><span></span><span></span><div class="clear"></div>
+        </div>
+        <% end -%>
+        <b><%= review.title %></b>: <%= review.content %>
+      </td>
+      <td id="review_<%= review.id %>" class="status_<%= review.review_status_id %>">
+        <%= collection_select(:review, :review_status_id,  @statuses, :id, :status) %>
+        <img src="/images/ajax_loader.gif" />
+        <div class="save_msg"></div>
+      </td>
+      <td><%= review.user_id %></td>
+      <td><%= review.product_id %></td>
+      <td><%= review.created_at.strftime("%Y-%m-%d") %></td>
+    </tr>
 <% end -%>
+  </tbody>
+</table>
 <% else -%>
 <p>There are no reviews</p>
 <% end -%>

@@ -1,6 +1,12 @@
 class ReviewsController < Spree::BaseController
   resource_controller
 
+  def index
+    @product = Product.find_by_permalink!(params[:product_id])
+    @reviews = []
+    @product.reviews.each { |review| @reviews << review if review.review_status.status == 'accepted' }
+  end
+
   create.before do
     user_review = Review.find(:first, :conditions => { :product_id => params[:review][:product_id], :user_id => params[:review][:user_id]} )
     Review.delete(user_review) if user_review

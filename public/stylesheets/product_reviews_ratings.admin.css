@@ -1,6 +1,17 @@
-div.review img { display: none; position: relative; top: 3px; margin-left: 6px; }
-  div.review div.save_msg { display: inline; margin-left: 6px; }
+tr.review { border-bottom: 2px solid #162F54; margin: 5px 0px; clear: both; }
+  tr.review img { display: none; margin-left: 6px; }
+  tr.review div.save_msg { display: inline; margin-left: 6px; }
+  tr.review span { background: url(/images/reviews_ratings.png) no-repeat 0px 0px; height: 16px; width: 16px; display: block; float: left; margin-right: 1px; }
+  tr.review select { font-size: 11px; margin-bottom: 5px; height: 16px; }
 
-div.review span { background: url(/images/reviews_ratings.png) no-repeat 0px 0px; height: 16px; width: 16px; display: block; float: left; margin-right: 1px; }
+table#admin_reviews th { padding-bottom: 0px; }
+table#admin_reviews thead tr .header div { position: relative; right: 0px; background: transparent url(/images/reviews_ratings.png) no-repeat -64px 0px; cursor: pointer; float: right; height: 9px; width: 8px; top: -13px; }
+table#admin_reviews thead tr .headerSortUp { background-color: #b5d39f; }
+table#admin_reviews thead tr .headerSortDown { background-color: #b5d39f; }
+table#admin_reviews thead tr .headerSortUp div { background-position: -64px -5px; height: 5px; top: -8px; }
+table#admin_reviews thead tr .headerSortDown div { background-position: -64px 0px; height: 5px; }
+th#user_id, th#product_id, th#date { width: 100px; }
+th#user_id:hover, th#product_id:hover, th#date:hover { cursor: pointer; }
+th#status { width: 150px; }
 
 div.clear { clear: both; }

@@ -8,6 +8,12 @@ $(function() {
   if($('div#average_rating').length > 0) {
     update_rating('div#average_rating', $('input#avg_rating').val());
   }
+  if($('div#product_reviews').length > 0) {
+    $('div#product_reviews p').each(function(count, element) {
+      var rating = $(element).attr('class').replace('rate_', '');
+      update_rating(element, rating);
+    });
+  }
 });
 
 var initiate_ratings = function() {
@@ -39,10 +45,6 @@ var initiate_ratings = function() {
       update_rating('div#ratings', $('input#user_rating').val());
     });
   update_rating('div#ratings', $('input#user_rating').val());
-  $('div#product_reviews p').each(function() {
-    var rating = $('p#' + $(this).attr('id') + ' input').val();
-    update_rating('p#' + $(this).attr('id'), rating);
-  });
 };
 
 var initiate_reviews = function() {
