@@ -1,9 +1,9 @@
 <div id="product_reviews">
 <h3>Product Reviews</h3>
-<% if !product.reviews.empty? -%>
+<% if @reviews && !@reviews.empty? -%>
 <% @reviews.each do |review| -%>
   <p id="review_<%= review.user_id %>"
-    <% if !review.rating.nil? && Spree::ProductReviewsRatings::Config[:can_rate_product] == 1 -%>
+    <% if review.rating && Spree::ProductReviewsRatings::Config[:can_rate_product] == 1 -%>
     class="rate_<%= review.rating.rating %>"
     <span></span><span></span><span></span><span></span><span></span>
     <input type="hidden" name="areview_rating" value="<%= review.rating.rating %>" />
@@ -14,9 +14,9 @@
     <%= review.content %>
   </p>
 <% end -%>
-<% if @review_count > Spree::ProductReviewsRatings::Config[:review_count] -%>
-<%= link_to 'View All Reviews', '/products/' + product.permalink + '/reviews' %>
-<% end -%>
+  <% if @review_count > Spree::ProductReviewsRatings::Config[:review_count] -%>
+  <%= link_to 'View All Reviews', '/products/' + product.permalink + '/reviews' %>
+  <% end -%>
 </div>
 <% else -%>
   <p id="no_reviews">This product has no reviews</p>

@@ -33,11 +33,11 @@ var initiate_ratings = function() {
   $('div#ratings span.vote')
     .mouseover(function() {
       var rating = $(this).attr('id').replace('r', '');
-      $('div#ratings span').children('span').each(function(span_count, span_item) {
-        if(span_count < rating) {
-          $(span_item).css('background-position', '-16px 0px');
+      $('div#ratings span').each(function(count, element) {
+        if(count < rating) {
+          $(element).css('background-position', '-16px 0px');
         } else {
-          $(span_item).css('background-position', '0px 0px');
+          $(element).css('background-position', '0px 0px');
         } 
       })
     })
@@ -57,11 +57,11 @@ var validate_submission = function() {
   var pass = true;
   var error_message = '';
   if($('div#ratings').length > 0 && $('input#user_rating').val() < 1) {
-    error_message += 'Rating is required<br />';
+    error_message += 'Rating is required. ';
     pass = false;
   }
   if($('div#reviews').length > 0 && $('textarea#review_content').val() == '') {
-    error_message += 'Review is required<br />';
+    error_message += 'Review is required.';
     pass = false;
   }
   $('p#success').html(error_message);
@@ -69,11 +69,11 @@ var validate_submission = function() {
 };
 
 var update_rating = function(region, rating) {
-  $(region).children('span').each(function(span_count, span_item) {
-    if(span_count < rating) {
-      $(span_item).css('background-position', '-32px 0px');
+  $(region).children('span').each(function(count, element) {
+    if(count < rating) {
+      $(element).css('background-position', '-32px 0px');
     } else {
-      $(span_item).css('background-position', '0px 0px');
+      $(element).css('background-position', '0px 0px');
     }
   })
 };
@@ -87,7 +87,6 @@ var pre_submit = function(type) {
 
 var set_success_message = function() {
   $('div#no_rating').remove();
-  $('p#no_reviews').remove();
   $('div#average_rating').show();
 
   update_rating('div#average_rating', $('input#avg_rating').val());
@@ -95,6 +94,7 @@ var set_success_message = function() {
 
   var status = $('input#reviews_ratings_status').val();
   if (status == 2 && $('div#reviews').length > 0) {
+    $('p#no_reviews').remove();
     $('p#review_' + $('input#reviews_ratings_user_id').val()).remove();
     var review_html = '';
     if($('div#ratings').length > 0) {
@@ -152,6 +152,7 @@ var submit_review = function() {
 
 var submit_review_and_rating = function(args, url, success_function) {
   if(!validate_submission()) {
+    $('img#review_loader').hide();
     return;
   }
   $.ajax({

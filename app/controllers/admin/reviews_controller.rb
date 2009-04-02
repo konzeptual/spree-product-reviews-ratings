@@ -3,7 +3,7 @@ class Admin::ReviewsController < Admin::BaseController
   layout 'admin'
 
   def index
-    @reviews = Review.find(:all)
+    @reviews = Review.find(:all, :include => :rating)
     @statuses = ReviewStatus.find(:all)
   end
 

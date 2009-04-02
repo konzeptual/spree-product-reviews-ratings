@@ -19,13 +19,13 @@ class ProductReviewsRatingsExtension < Spree::Extension
         if Spree::ProductReviewsRatings::Config[:can_review_product] == 1
           @product_review = current_user ? Review.find(:first, :conditions => { :product_id => object.id, :user_id => current_user.id }) : Review.new
           @review_rating_header = 'Review'
+          @reviews = Review.find(:all, :conditions => { :review_status_id => 2, :product_id => object.id }, :limit => Spree::ProductReviewsRatings::Config[:review_count], :include => :rating)
+          @review_count = Review.find(:all, :conditions => { :review_status_id => 2, :product_id => object.id }).size
         end
         if Spree::ProductReviewsRatings::Config[:can_rate_product] == 1
           product_rating = current_user ? Rating.find(:first, :conditions => { :product_id => object.id, :user_id => current_user.id }) : Rating.new
           @user_rating = product_rating ? product_rating.rating : 0
           @review_rating_header = Spree::ProductReviewsRatings::Config[:can_review_product] == 1 ? 'Review and Rate' : 'Rate'
-          @reviews = Review.find(:all, :conditions => { :review_status_id => 2, :product_id => object.id }, :limit => Spree::ProductReviewsRatings::Config[:review_count])
-          @review_count = Review.find(:all, :conditions => { :review_status_id => 2, :product_id => object.id }).size
         end
         @review_rating_header += ' this Product'
       end
