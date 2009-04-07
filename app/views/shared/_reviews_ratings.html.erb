@@ -1,5 +1,4 @@
 <% content_for :head do -%>
-  <%= javascript_include_tag 'jquery-1.3.2.min' %>
   <%= javascript_include_tag 'jquery.product_reviews_ratings' %>
   <%= stylesheet_link_tag 'product_reviews_ratings' %>
 <% end -%>
@@ -20,5 +19,6 @@
 
 <% else -%>
 <% session[:return_to] = request.request_uri %>
-<p><%= link_to t('log_in'), login_path %></p>
+<p>You must be logged in to review or rate this product. <%= #link_to t('log_in'), login_path
+%></p>
 <% end -%>

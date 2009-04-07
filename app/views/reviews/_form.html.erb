@@ -2,7 +2,7 @@
   <p>
     <label for="title">Title</label><%= text_field :review, :title %>
   </p>
-  <p id="content">
+  <p>
     <label for="content">Content</label><%= text_area(:review, :content, :rows => 5, :cols => 40) %>
   </p>
   <% if !@product_review.nil? -%>
