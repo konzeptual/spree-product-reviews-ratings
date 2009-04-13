@@ -1,5 +1,5 @@
 div#reviews { clear: both; margin: 10px 0px; }
-  div#reviews p#review_alert { color: red; font-size: 10px; }
+  div#reviews p#review_alert { color: red; font-size: 11px; }
   div#reviews p { margin: 3px 0px; }
   div#reviews div#submit { background: url(/images/reviews_ratings.png) no-repeat 0px -16px; height: 29px; width: 74px; display: block; }
     div#reviews div#submit:hover { cursor: pointer; }
@@ -13,8 +13,9 @@ div#ratings span,
 div#average_rating span,
 div#product_reviews span { background: url(/images/reviews_ratings.png) no-repeat 0px 0px; height: 16px; width: 16px; display: block; float: left; margin-right: 2px; }
 
-p#success { margin:0px; color: red; font-size: 10px; height: 13px; clear: both; }
+p#success { margin:0px; color: red; font-size: 11px; height: 13px; clear: both; }
 div#login_review_and_rating { clear: both; }
+  div#login_review_and_rating div#login_block { display: none; }
 h3#review_and_rating { display: inline; float: left; margin: 0px; clear: both; }
 img#review_loader { display: none; float: left; margin-left: 4px; }
  
