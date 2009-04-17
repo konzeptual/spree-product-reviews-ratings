@@ -1,12 +1,13 @@
 <div id="reviews">
   <p>
-    <label for="title">Title</label><%= text_field :review, :title %>
+    <label for="title">Title</label><%= text_field :review, :title, { :value => @review_title } %>
   </p>
   <p>
-    <label for="content">Content</label><%= text_area(:review, :content, :rows => 5, :cols => 40) %>
+    <label for="content">Content</label><%= text_area(:review, :content, { :rows => 5, :cols => 40, :value => @review_content }) %>
   </p>
-  <% if !@product_review.nil? -%>
-  <p id="review_alert">You have already submitted a review for this product. Your old review will be removed if you resubmit.</p>
-  <% end -%>
   <div id="submit"></div>
+  <% if !@product_review.nil? -%>
+  <div id="delete"><%= @product_review.id %></div>
+  <p id="review_alert">You have already reviewed this product. Your review can be edited or deleted.</p>
+  <% end -%>
 </div>

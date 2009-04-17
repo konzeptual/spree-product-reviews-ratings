@@ -1,8 +1,9 @@
 <h3 id="haverage_rating">Average Rating</h3>
 <div id="no_rating"<% if !product.ratings.empty? %> style="display:none;"<% end -%>>
-  This product has not yet been rated.
+  This product has not yet been rated. Be the first!
 </div>
 <div id="average_rating"<% if product.ratings.empty? -%> style="display:none;"<% end -%>>
-  <span></span><span></span><span></span><span></span><span></span><div class="clear"></div>
+  <span></span><span></span><span></span><span></span><span></span> <% if !product.ratings.empty? -%>&nbsp;&nbsp;<b>out of <%= product.ratings.size %> ratings</b><% end -%>
+  <div class="clear"></div>
   <input type="hidden" id="avg_rating" value="<%= product.ratings.average('rating').to_i %>" />
 </div>

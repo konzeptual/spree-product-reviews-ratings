@@ -8,7 +8,6 @@
 <%= hidden_field(:reviews_ratings, :product_id, :value => product.id) %>
 <%= hidden_field(:reviews_ratings, :status, :value => Spree::ProductReviewsRatings::Config[:default_review_status]) %>
 <h3 id="review_and_rating"><%= @review_rating_header %></h3><img id="review_loader" src="/images/ajax_loader.gif" />
-<p id="success"></p>
 
 <% if Spree::ProductReviewsRatings::Config[:can_rate_product] == 1 -%>
 <%= render :partial => 'ratings/form', :locals => { :product => product } %>
@@ -16,6 +15,7 @@
 <% if Spree::ProductReviewsRatings::Config[:can_review_product] == 1 -%>
 <%= render :partial => 'reviews/form', :locals => { :product => product } %>
 <% end -%>
+<p id="success"></p>
 
 <% else -%>
 <% session[:return_to] = request.request_uri %>

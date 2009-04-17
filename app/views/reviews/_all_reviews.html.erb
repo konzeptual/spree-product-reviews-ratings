@@ -10,14 +10,15 @@
     <% else -%>
     >
     <% end -%>
-    <b><%= review.title %></b>
+    <b><%= review.title %> by <%= review.user.login %></b>
+    <small><%= review.created_at.strftime("%m-%d-%Y") %></small>
     <%= review.content %>
   </p>
 <% end -%>
   <% if @review_count > Spree::ProductReviewsRatings::Config[:review_count] -%>
-  <%= link_to 'View All Reviews', '/products/' + product.permalink + '/reviews' %>
+  <%= link_to 'View All Reviews for ' + product.name, '/products/' + product.permalink + '/reviews' %>
   <% end -%>
 <% else -%>
-  <p id="no_reviews">This product has no reviews</p>
+  <p id="no_reviews">This product has no reviews. Be the first!</p>
 <% end -%>
 </div>

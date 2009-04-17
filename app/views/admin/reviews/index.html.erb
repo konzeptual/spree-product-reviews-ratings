@@ -12,7 +12,7 @@
   <thead>
     <tr>
       <th id="data">Data</th>
-      <th id="status">Status</th>
+      <th id="status">Status<div></div></th>
       <th id="user_id">User Id<div></div></th>
       <th id="product_id">Product Id<div></div></th>
       <th id="date">Date<div></div></th>
@@ -30,6 +30,7 @@
         <b><%= review.title %></b>: <%= review.content %>
       </td>
       <td id="review_<%= review.id %>" class="status_<%= review.review_status_id %>">
+        <small><%= review.review_status_id %></small>
         <%= collection_select(:review, :review_status_id,  @statuses, :id, :status) %>
         <img src="/images/ajax_loader.gif" />
         <div class="save_msg"></div>

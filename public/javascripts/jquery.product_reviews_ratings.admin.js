@@ -1,7 +1,7 @@
 $(function() {
   $('tr.review select').change(function() { update_status($(this)); });
   initialize_reviews_ratings();
-  $('table#admin_reviews').tablesorter({ headers: { 0: { sorter: false }, 1: { sorter: false }}});
+  $('table#admin_reviews').tablesorter({ headers: { 0: { sorter: false } }});
 });
 
 initialize_reviews_ratings = function() {
