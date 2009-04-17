@@ -129,6 +129,7 @@ var submit_rating = function(additional_arg) {
     (additional_arg || '');
   submit_review_and_rating('POST', args, '/ratings', function(json) {
     $('input#avg_rating').val(json.average_rating);
+    $('div#average_rating b').html('out of ' + json.average_rating_count);
     $('input#user_rating').val(json.user_rating);
     set_success_message();
   });
@@ -141,7 +142,12 @@ var submit_review = function() {
     '&review[content]=' + encodeURIComponent($('textarea#review_content').val()) +
     '&authenticity_token=' + encodeURIComponent($('[name=authenticity_token]').val());
   submit_review_and_rating('POST', args, '/reviews', function(json) {
-    $('div#reviews').append($(document.createElement('div')).attr('id', 'delete').html(json.id).click(function() { delete_review() }));
+    if($('div#delete').length > 0) {
+      $('div#delete').html(json.id);
+    } else {
+      $('div#reviews').append($(document.createElement('div')).attr('id', 'delete').html(json.id).click(function() { delete_review() }));
+      $('div#reviews').append($(document.createElement('p')).attr('id', 'review_alert').html('Your review can be edited or deleted.'));
+    }
     if($('div#ratings').length > 0) {
       submit_rating('&rating[review_id]=' + json.id);
     } else {
@@ -160,8 +166,11 @@ var delete_review = function() {
     $('p#review_alert').remove();
     $('p#pre_rated').remove();
     $('div#delete').remove();
+    //if user rating
     $('input#user_rating').val('0');
     update_rating('div#ratings', '0');
+    //add update to average rating sxn if exists
+    //
   });
 };
 
