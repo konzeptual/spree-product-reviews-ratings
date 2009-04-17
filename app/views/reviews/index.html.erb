@@ -6,7 +6,7 @@
 
 <h1>Reviews for <%= @product.name %></h1>
 <div class="review_right">
-<%= link_to 'Go Back to Product', '/products/' + @product.permalink %>
+<%= link_to 'View and Buy ' + @product.name, '/products/' + @product.permalink %><br />
 <%= product_image(@product) %>
 <p><%= @product.description %></p>
 </div>

@@ -15,4 +15,12 @@ class ReviewsController < Spree::BaseController
   create.response do |wants|
     wants.html { render :json => { :title => object.title, :content => object.content, :id => object.id, :user_id => object.user_id, :status => object.review_status_id }.to_json, :layout => false }
   end
+
+  destroy.before do
+    Rating.delete(object.rating)
+  end
+
+  destroy.response do |wants|
+    wants.html { render :json => { :success => 1 }.to_json, :layout => false }
+  end
 end

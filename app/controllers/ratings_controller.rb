@@ -7,6 +7,6 @@ class RatingsController < Spree::BaseController
   end
 
   create.response do |wants|
-    wants.html { render :json => { :average_rating => object.product.ratings.average('rating'), :user_rating => object.rating }.to_json, :layout => false }
+    wants.html { render :json => { :average_rating_count => object.product.ratings.size, :average_rating => object.product.ratings.average('rating').to_i, :user_rating => object.rating }.to_json, :layout => false }
   end
 end

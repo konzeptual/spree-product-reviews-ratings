@@ -49,9 +49,8 @@ var initiate_ratings = function() {
 };
 
 var initiate_reviews = function() {
-  $('div#submit').click(function() { submit_review(); })
-    .mouseover(function() { $(this).css('background-position', '0px -45px'); })
-    .mouseout(function() { $(this).css('background-position', '0px -16px'); });
+  $('div#submit').click(function() { submit_review(); });
+  $('div#delete').click(function() { delete_review(); });
 };
 
 var validate_submission = function() {
@@ -104,23 +103,23 @@ var set_success_message = function() {
     review_html += '<b>' + $('input#review_title').val() + '</b>' + $('textarea#review_content').val();
     var new_review = $(document.createElement('p')).html(review_html).css('background-color', '#D4D8DA').attr('id', 'review_' + $('input#reviews_ratings_user_id').val());
     $('div#product_reviews').append(new_review);
-    update_rating(new_review, $('input#user_rating').val()); //'p#review_' + $('input#reviews_ratings_user_id').val(), $('input#user_rating').val());
+    update_rating(new_review, $('input#user_rating').val());
   }
 
   var msg;
   if($('div#reviews').length > 0) {
     if($('div#ratings').length > 0) {
-      msg = 'Your review and rating has been saved!';
+      msg = 'Your review and rating have been submitted';
     } else {
-      msg = 'Your review has been saved!';
+      msg = 'Your review has been submitted';
     }
     if(status == 1) {
-      msg += ' Your review is awaiting approval.';
+      msg += ' and your review has been added to our queue';
     }
   } else {
-    msg = 'Your rating has been saved!';
+    msg = 'Your rating has been saved';
   }
-  $('p#success').html(msg);
+  $('p#success').html(msg + '.');
 };
 
 var submit_rating = function(additional_arg) {
@@ -128,8 +127,9 @@ var submit_rating = function(additional_arg) {
     '&rating[rating]=' + $('input#user_rating').val() + 
     '&authenticity_token=' + encodeURIComponent($('[name=authenticity_token]').val()) +
     (additional_arg || '');
-  submit_review_and_rating(args, '/ratings', function(json) {
+  submit_review_and_rating('POST', args, '/ratings', function(json) {
     $('input#avg_rating').val(json.average_rating);
+    $('div#average_rating b').html('out of ' + json.average_rating_count);
     $('input#user_rating').val(json.user_rating);
     set_success_message();
   });
@@ -141,7 +141,13 @@ var submit_review = function() {
     '&review[title]=' + encodeURIComponent($('input#review_title').val()) +
     '&review[content]=' + encodeURIComponent($('textarea#review_content').val()) +
     '&authenticity_token=' + encodeURIComponent($('[name=authenticity_token]').val());
-  submit_review_and_rating(args, '/reviews', function(json) {
+  submit_review_and_rating('POST', args, '/reviews', function(json) {
+    if($('div#delete').length > 0) {
+      $('div#delete').html(json.id);
+    } else {
+      $('div#reviews').append($(document.createElement('div')).attr('id', 'delete').html(json.id).click(function() { delete_review() }));
+      $('div#reviews').append($(document.createElement('p')).attr('id', 'review_alert').html('Your review can be edited or deleted.'));
+    }
     if($('div#ratings').length > 0) {
       submit_rating('&rating[review_id]=' + json.id);
     } else {
@@ -151,13 +157,30 @@ var submit_review = function() {
   return;
 };
 
-var submit_review_and_rating = function(args, url, success_function) {
+var delete_review = function() {
+  var args = 'review_id=' + $('div#delete').html() +
+    '&authenticity_token=' + encodeURIComponent($('[name=authenticity_token]').val());
+  submit_review_and_rating('DELETE', args, '/reviews/' + $('div#delete').html(), function() {
+    $('input#review_title').val('');
+    $('textarea#review_content').val('');
+    $('p#review_alert').remove();
+    $('p#pre_rated').remove();
+    $('div#delete').remove();
+    //if user rating
+    $('input#user_rating').val('0');
+    update_rating('div#ratings', '0');
+    //add update to average rating sxn if exists
+    //
+  });
+};
+
+var submit_review_and_rating = function(type, args, url, success_function) {
   if(!validate_submission()) {
     $('img#review_loader').hide();
     return;
   }
   $.ajax({
-    type: "POST",
+    type: type,
     url: url,
     beforeSend: function(xhr) {
       xhr.setRequestHeader('Accept-Encoding', 'identify');

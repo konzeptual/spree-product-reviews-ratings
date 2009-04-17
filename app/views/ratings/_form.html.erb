@@ -2,4 +2,5 @@
   <input type="hidden" id="user_rating" value="<%= @user_rating %>" />
   <span class="vote" id="r1"></span><span class="vote" id="r2"></span><span class="vote" id="r3"></span><span class="vote" id="r4"></span><span class="vote" id="r5"></span>
   <div class="clear"></div>
+  <% if @user_rating != 0 -%><p id="pre_rated">You have already rated this product.</p><% end -%>
 </div>

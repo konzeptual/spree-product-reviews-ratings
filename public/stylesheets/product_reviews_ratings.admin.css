@@ -10,8 +10,9 @@ table#admin_reviews thead tr .headerSortUp { background-color: #b5d39f; }
 table#admin_reviews thead tr .headerSortDown { background-color: #b5d39f; }
 table#admin_reviews thead tr .headerSortUp div { background-position: -64px -5px; height: 5px; top: -8px; }
 table#admin_reviews thead tr .headerSortDown div { background-position: -64px 0px; height: 5px; }
+table#admin_reviews small { display: none; }
 th#user_id, th#product_id, th#date { width: 100px; }
-th#user_id:hover, th#product_id:hover, th#date:hover { cursor: pointer; }
+th#user_id:hover, th#product_id:hover, th#date:hover, th#status:hover { cursor: pointer; }
 th#status { width: 150px; }
 
 div.clear { clear: both; }
