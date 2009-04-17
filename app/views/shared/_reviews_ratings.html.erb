@@ -20,7 +20,10 @@
 <% else -%>
 <% session[:return_to] = request.request_uri %>
 <div id="login_review_and_rating">
-<h4>You must be logged in to review or rate this product:</h4>
+<h4><a href="#login_block_loc">You must be logged in to review or rate this product.</a></h4>
+<a name="login_block_loc"></a>
+<div id="login_block">
 <%= render :partial => 'shared/login' %>
+</div>
 </div>
 <% end -%>

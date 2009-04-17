@@ -17,7 +17,6 @@
   <% if @review_count > Spree::ProductReviewsRatings::Config[:review_count] -%>
   <%= link_to 'View All Reviews', '/products/' + product.permalink + '/reviews' %>
   <% end -%>
-</div>
 <% else -%>
   <p id="no_reviews">This product has no reviews</p>
 <% end -%>

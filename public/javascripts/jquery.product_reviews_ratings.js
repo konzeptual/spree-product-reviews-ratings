@@ -14,6 +14,7 @@ $(function() {
       update_rating(element, rating);
     });
   }
+  $('div#login_review_and_rating h4 a').click(function() { $('div#login_block').show(); });
 });
 
 var initiate_ratings = function() {
