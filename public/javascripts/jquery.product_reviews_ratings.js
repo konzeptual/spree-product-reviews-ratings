@@ -51,6 +51,10 @@ var initiate_ratings = function() {
 var initiate_reviews = function() {
   $('div#submit').click(function() { submit_review(); });
   $('div#delete').click(function() { delete_review(); });
+  if($('div#more_info').length > 0) {
+    $('div#more_info').click(function() { $('div#more_info_content').show(); });
+    $('div#more_info_content div#close_info').click(function() { $('div#more_info_content').hide(); });
+  }
 };
 
 var validate_submission = function() {
@@ -58,10 +62,6 @@ var validate_submission = function() {
   var error_message = '';
   if($('div#ratings').length > 0 && $('input#user_rating').val() < 1) {
     error_message += 'Rating is required. ';
-    pass = false;
-  }
-  if($('div#reviews').length > 0 && $('textarea#review_content').val() == '') {
-    error_message += 'Review is required.';
     pass = false;
   }
   $('p#success').html(error_message);
@@ -107,7 +107,7 @@ var set_success_message = function() {
   }
 
   var msg;
-  if($('div#reviews').length > 0) {
+  if($('div#reviews').length > 0 && $('textarea#review_content').val() != '') {
     if($('div#ratings').length > 0) {
       msg = 'Your review and rating have been submitted';
     } else {
@@ -136,6 +136,10 @@ var submit_rating = function(additional_arg) {
 };
 
 var submit_review = function() {
+  if($('textarea#review_content').val() == '') {
+    submit_rating();
+    return;
+  }
   var args = pre_submit('review') +
     '&review[review_status_id]=' + $('input#reviews_ratings_status').val() + 
     '&review[title]=' + encodeURIComponent($('input#review_title').val()) +
