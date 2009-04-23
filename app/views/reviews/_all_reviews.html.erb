@@ -10,7 +10,7 @@
     <% else -%>
     >
     <% end -%>
-    <b><%= review.title %> by <%= review.user.login %></b>
+    <b><%= review.title %></b>
     <small><%= review.created_at.strftime("%m-%d-%Y") %></small>
     <%= review.content %>
   </p>

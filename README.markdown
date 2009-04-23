@@ -39,3 +39,7 @@ INSTALLATION
     *This view contains the product reviews (limited by the review_count setting) to be displayed on the product page. It is separate from the form because you may place this in a different location on the product page than the form. 
 
 5. Restart server
+
+Refer to [spree: ruby on rails ecommerce][1] to learn more about spree.
+
+[1]: http://spreecommerce.com/
