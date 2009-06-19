@@ -17,17 +17,14 @@ class ProductReviewsRatingsExtension < Spree::Extension
       def set_user_review_and_rating
         @review_rating_header = ''
         if Spree::ProductReviewsRatings::Config[:can_review_product] == 1
-          @product_review = Review.find(:first, :conditions => { :product_id => object.id, :user_id => current_user.id }) if current_user
-          @review_title = @product_review ? @product_review.title : ''
-          @review_content = @product_review ? @product_review.content : ''
           @review_rating_header = 'Review'
           @reviews = Review.find(:all, :conditions => { :review_status_id => 2, :product_id => object.id }, :limit => Spree::ProductReviewsRatings::Config[:review_count], :include => :rating)
           @review_count = Review.find(:all, :conditions => { :review_status_id => 2, :product_id => object.id }).size
+          @user_review = current_user ? Review.find_or_create_by_product_id_and_user_id(:product_id => object.id, :user_id => current_user.id) : Review.new
         end
         if Spree::ProductReviewsRatings::Config[:can_rate_product] == 1
-          product_rating = current_user ? Rating.find(:first, :conditions => { :product_id => object.id, :user_id => current_user.id }) : Rating.new
-          @user_rating = product_rating ? product_rating.rating : 0
           @review_rating_header = Spree::ProductReviewsRatings::Config[:can_review_product] == 1 ? 'Review and Rate' : 'Rate'
+					@user_rating = current_user ? Rating.find_or_create_by_product_id_and_user_id(:product_id => object.id, :user_id => current_user.id) : Rating.new
         end
         @review_rating_header += ' this Product'
       end
@@ -37,10 +34,5 @@ class ProductReviewsRatingsExtension < Spree::Extension
       has_many :reviews
       has_many :ratings
     end
-
-    #User.class_eval do
-    #  has_many :ratings
-    #  has_many :reviews
-    #end
   end
 end

@@ -4,4 +4,4 @@ map.namespace :admin do |admin|
   admin.resources :reviews
 end
 
-map.resources :products, :has_many => :reviews
+map.connect 'products/:id/reviews', :controller => 'reviews_ratings', :action => 'index'

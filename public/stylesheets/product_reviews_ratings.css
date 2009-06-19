@@ -1,8 +1,5 @@
 h3#review_and_rating { display: inline; float: left; margin: 0px; clear: both; }
 img#review_loader { display: none; float: left; margin-left: 4px; }
-div#login_review_and_rating { clear: both; }
-  div#login_review_and_rating h4 { font-size: 1.15em; }
-  div#login_review_and_rating div#login_block { display: none; background-color: #CCC; width: 300px; padding: 10px; }
 
 div#reviews { clear: both; margin: 5px 0px; }
   div#reviews p#review_alert { color: #3878d6; font-size: 11px; clear: both; }
@@ -20,7 +17,7 @@ div#close_info:hover { cursor: pointer; }
 
 div#product_reviews { clear: both; margin: 5px 0px; }
   div#product_reviews h3 { clear: both; margin: 10px 0px 0px 0px; }
-  div#product_reviews p { padding: 0px; margin: 4px 0px; }
+  div#product_reviews p { padding: 0px; margin: 4px 0px; border-bottom: 1px solid #999; }
   div#product_reviews span { margin-bottom: 3px; }
   div#product_reviews b { clear: both; display: block; }
   div#product_reviews span { background: url(/images/reviews_ratings.png) no-repeat 0px 0px; height: 16px; width: 16px; display: block; float: left; margin-right: 2px; }  

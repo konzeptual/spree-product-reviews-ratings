@@ -4,13 +4,17 @@
 <% end -%>
 
 <% if current_user %>
-<%= hidden_field(:reviews_ratings, :user_id, :value => current_user.id) %>
-<%= hidden_field(:reviews_ratings, :product_id, :value => product.id) %>
-<%= hidden_field(:reviews_ratings, :status, :value => Spree::ProductReviewsRatings::Config[:default_review_status]) %>
+<%= hidden_field(:review, :user_id, :value => current_user.id) %>
+<%= hidden_field(:review, :product_id, :value => product.id) %>
+<%= hidden_field(:review, :status, :value => Spree::ProductReviewsRatings::Config[:default_review_status]) %>
 <h3 id="review_and_rating"><%= @review_rating_header %></h3><img id="review_loader" src="/images/ajax_loader.gif" />
 
 <% if Spree::ProductReviewsRatings::Config[:can_rate_product] == 1 -%>
 <%= render :partial => 'ratings/form', :locals => { :product => product } %>
+<% if Spree::ProductReviewsRatings::Config[:can_review_product] != 1 -%>
+<%= hidden_field(:review, :title, :value => '') %>
+<%= hidden_field(:review, :content, :value => '') %>
+<% end -%>
 <% end -%>
 <% if Spree::ProductReviewsRatings::Config[:can_review_product] == 1 -%>
 <%= render :partial => 'reviews/form', :locals => { :product => product } %>
@@ -19,11 +23,5 @@
 
 <% else -%>
 <% session[:return_to] = request.request_uri %>
-<div id="login_review_and_rating">
-<h4><a href="#login_block_loc">You must be logged in to review or rate this product.</a></h4>
-<a name="login_block_loc"></a>
-<div id="login_block">
-<%= render :partial => 'shared/login' %>
-</div>
-</div>
+<%= link_to 'You must be logged in to review or rate this product.', login_path %>
 <% end -%>
