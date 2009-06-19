@@ -5,7 +5,6 @@
   <p>
     <label for="content">Content</label><%= text_area(:review, :content, { :rows => 5, :cols => 40, :value => @review_content }) %>
   </p>
-  <%= render :partial => 'reviews/info' %>
   <div id="submit"></div>
   <% if !@product_review.nil? -%>
   <div id="delete"><%= @product_review.id %></div>

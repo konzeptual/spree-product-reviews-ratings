@@ -1,5 +1,4 @@
-map.resources :ratings
-map.resources :reviews
+map.resources :reviews_ratings
 
 map.namespace :admin do |admin|
   admin.resources :reviews

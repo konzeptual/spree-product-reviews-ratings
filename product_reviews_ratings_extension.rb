@@ -34,13 +34,13 @@ class ProductReviewsRatingsExtension < Spree::Extension
     end
 
     Product.class_eval do
-      has_many :ratings
       has_many :reviews
+      has_many :ratings
     end
 
-    User.class_eval do
-      has_many :ratings
-      has_many :reviews
-    end
+    #User.class_eval do
+    #  has_many :ratings
+    #  has_many :reviews
+    #end
   end
 end
