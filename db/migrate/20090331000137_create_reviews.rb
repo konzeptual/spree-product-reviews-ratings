@@ -9,6 +9,7 @@ class CreateReviews < ActiveRecord::Migration
 
       t.timestamps
     end
+		add_index(:reviews, [:product_id, :user_id], :unique => true)
   end
 
   def self.down
