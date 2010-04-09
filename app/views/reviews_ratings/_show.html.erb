@@ -5,19 +5,19 @@
 
 <% if current_user %>
 <%= hidden_field(:review, :user_id, :value => current_user.id) %>
-<%= hidden_field(:review, :product_id, :value => product.id) %>
+<%= hidden_field(:review, :product_id, :value => @product.id) %>
 <%= hidden_field(:review, :status, :value => Spree::ProductReviewsRatings::Config[:default_review_status]) %>
 <h3 id="review_and_rating"><%= @review_rating_header %></h3><img id="review_loader" src="/images/ajax_loader.gif" />
 
 <% if Spree::ProductReviewsRatings::Config[:can_rate_product] == 1 -%>
-<%= render :partial => 'ratings/form', :locals => { :product => product } %>
+<%= render :partial => 'ratings/form', :locals => { :product => @product } %>
 <% if Spree::ProductReviewsRatings::Config[:can_review_product] != 1 -%>
 <%= hidden_field(:review, :title, :value => '') %>
 <%= hidden_field(:review, :content, :value => '') %>
 <% end -%>
 <% end -%>
 <% if Spree::ProductReviewsRatings::Config[:can_review_product] == 1 -%>
-<%= render :partial => 'reviews/form', :locals => { :product => product } %>
+<%= render :partial => 'reviews/form', :locals => { :product => @product } %>
 <% end -%>
 <p id="success"></p>
 

@@ -24,19 +24,12 @@ INSTALLATION
 
     :review_count - This integer represents the number of reviews that show on the product page. When the product has more reviews, another page is linked to from the product page that contains all the reviews.
 
-4. Add the view to your product page. There are three separate views:
+4. Add the view to your product page with a hook. Available product page hooks include product_description, product_properties, cart_form. Hook actions include insert_after, insert_before, replace, and delete. By default, the extension inserts the reviews_ratings view after the product_properties hook. Refer to the Spree documentation on hooks and theming to determine how to include review and ratings views into your site.
 
-    <%= render :partial => 'shared/reviews_ratings', :locals => { :product => @product } -%>
-
-    *This view contains the form for ratings and reviews. This should be included no matter what your configuration settings are for reviews and ratings.
-
-    <%= render :partial => 'ratings/average_rating', :locals => { :product => @product } -%>
-
-    *This view contains the average rating header and value for the product. It is separate from the form because you may place this in a different location on the product page than the form.
-
-    <%= render :partial => 'reviews/all_reviews', :locals => { :product => @product } -%>
-
-    *This view contains the product reviews (limited by the review_count setting) to be displayed on the product page. It is separate from the form because you may place this in a different location on the product page than the form. 
+   View definitions:
+   	/review_ratings/form: This view contains the form for ratings and reviews. This should be included no matter what your configuration settings are for reviews and ratings.
+	/ratings/average_rating: This view contains the average rating header and value for the product. It is separate from the form because you may place this in a different location on the product page than the form.
+	/reviews/all_reviews: This view contains the product reviews (limited by the review_count setting) to be displayed on the product page. It is separate from the form because you may place this in a different location on the product page than the form. 
 
 5. Restart server
 
