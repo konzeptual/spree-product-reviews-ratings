@@ -16,7 +16,7 @@
   </p>
 <% end -%>
   <% if @review_count > Spree::ProductReviewsRatings::Config[:review_count] -%>
-  <%= link_to 'View All Reviews for ' + product.name, '/products/' + product.permalink + '/reviews', :id => 'view_all' %>
+  <%= link_to 'View All Reviews for ' + @product.name, '/products/' + @product.permalink + '/reviews', :id => 'view_all' %>
   <% end -%>
 <% else -%>
   <p id="no_reviews">This product has no reviews. Be the first!</p>
