@@ -6,12 +6,12 @@ ru-RU:
   must_be_logged_in_to_review_or_rate: Вы должны представиться чтобы оставить отзыв или оценить товар.
   review_title: Заголовок
   review_content: Отзыв
-  your_review_can_be_edited_or_deleted: Ваш отзыв может быть отредактирован или даже удален (при несоблюдении элементарных правил)
+  your_review_can_be_edited_or_deleted: Вы можете отредактировать или даже удалить свой отзыв
   product_reviews: Отзывы на товар
   view_all_reviews_for: "Посмотреть все отзывы для "
   average_rating: Средняя оценка посетителей
   review: Оставить отзыв
   rate: "Оценить "
-  review_and_rate: Оставить отзыв и оценить
+  review_and_rate: "Оставить отзыв и оценить "
+  out_of: "оценило человек :"
   this_product: этот товар
-
