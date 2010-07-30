@@ -33,6 +33,12 @@ class ProductReviewsRatingsExtension < Spree::Extension
     Product.class_eval do
       has_many :reviews
       has_many :ratings
+
+      named_scope :descend_by_rating,
+      :joins => "LEFT JOIN ratings ON ratings.product_id = products.id",
+      :group => "id",
+      :select => "products.*,  SUM(ratings.rating) / COUNT(ratings.rating) AS rating_average",
+      :order => "rating_average DESC"
     end
   end
 end
