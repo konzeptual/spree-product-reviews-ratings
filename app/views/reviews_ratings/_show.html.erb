@@ -23,5 +23,5 @@
 
 <% else -%>
 <% session[:return_to] = request.request_uri %>
-<%= link_to 'You must be logged in to review or rate this product.', login_path %>
+<%= link_to t(:must_be_logged_in_to_review_or_rate), login_path %>
 <% end -%>

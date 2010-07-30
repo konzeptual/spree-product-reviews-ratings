@@ -1,0 +1,16 @@
+en-US:
+  product_has_not_been_rated: This product has not yet been rated. Be the first!
+  product_has_no_reviews: This product has no reviews. Be the first!
+  you_have_already_rated: You have already rated this product.
+  reviews_for: Reviews for
+  must_be_logged_in_to_review_or_rate: You must be logged in to review or rate this product.
+  review_title: Title
+  review_content: Content
+  your_review_can_be_edited_or_deleted: Your review can be edited or deleted.
+  product_reviews: Product Reviews
+  view_all_reviews_for: "View All Reviews for "
+  average_rating: Average Rating
+  review: Review
+  rate: "Rate "
+  review_and_rate: Review and rate
+  this_product: this Product

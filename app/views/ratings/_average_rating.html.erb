@@ -1,6 +1,6 @@
-<h3 id="haverage_rating">Average Rating</h3>
+<h3 id="haverage_rating"><%= t(:average_rating) %></h3>
 <div id="no_rating"<% if !@product.ratings.empty? %> style="display:none;"<% end -%>>
-  This product has not yet been rated. Be the first!
+  <%= t(:product_has_not_been_rated) %>
 </div>
 <div id="average_rating"<% if @product.ratings.empty? -%> style="display:none;"<% end -%>>
   <span></span><span></span><span></span><span></span><span></span> <% if !@product.ratings.empty? -%>&nbsp;&nbsp;<b>out of <%= @product.ratings.size %></b><% end -%>

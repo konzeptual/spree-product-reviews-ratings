@@ -4,7 +4,7 @@
   <%= stylesheet_link_tag 'product_reviews_ratings' %>
 <% end -%>
 
-<h1>Reviews for <%= @product.name %></h1>
+<h1><%= t(:reviews_for) %> <%= @product.name %></h1>
 <div class="review_right">
 <%= link_to 'View and Buy ' + @product.name, '/products/' + @product.permalink %><br />
 <%= product_image(@product) %>

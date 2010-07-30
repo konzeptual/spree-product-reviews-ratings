@@ -17,16 +17,16 @@ class ProductReviewsRatingsExtension < Spree::Extension
       def set_user_review_and_rating
         @review_rating_header = ''
         if Spree::ProductReviewsRatings::Config[:can_review_product] == 1
-          @review_rating_header = 'Review'
+          @review_rating_header = t(:review)
           @reviews = Review.find(:all, :conditions => { :review_status_id => 2, :product_id => object.id }, :limit => Spree::ProductReviewsRatings::Config[:review_count], :include => :rating)
           @review_count = Review.find(:all, :conditions => { :review_status_id => 2, :product_id => object.id }).size
           @user_review = current_user ? Review.find_or_create_by_product_id_and_user_id(:product_id => object.id, :user_id => current_user.id) : Review.new
         end
         if Spree::ProductReviewsRatings::Config[:can_rate_product] == 1
-          @review_rating_header = Spree::ProductReviewsRatings::Config[:can_review_product] == 1 ? 'Review and Rate' : 'Rate'
+          @review_rating_header = Spree::ProductReviewsRatings::Config[:can_review_product] == 1 ? t(:review_and_rate) : t(:rate)
 					@user_rating = current_user ? Rating.find_or_create_by_product_id_and_user_id(:product_id => object.id, :user_id => current_user.id) : Rating.new
         end
-        @review_rating_header += ' this Product'
+        @review_rating_header += t(:this_product)
       end
     end
 
